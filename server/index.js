@@ -1,10 +1,13 @@
 import express from 'express';
 import { configDotenv } from 'dotenv'
 import connectDB from './config/db.js';
+import router from './routes/studentRouter.js';
 
 const app = express();
 configDotenv();
 
+// Middlewares 
+app.use('/api/stud', router);
 
 
 
