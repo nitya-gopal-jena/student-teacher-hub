@@ -1,6 +1,9 @@
 import Student from '../models/student.js';
 import bcrypt from 'bcryptjs';
 import generateToken from '../utils/token.js';
+import { currentStudentId } from '../utils/authUtils.js';
+
+
 
 // Student signup logic
 export const handleStudentSignup = async (req, res) => {
@@ -37,7 +40,6 @@ export const handleStudentSignup = async (req, res) => {
 };
 
 // Student login logic
-
 export const handleStudentLogin = async (req, res) => {
     try {
         const { email, password } = req.body;
@@ -70,3 +72,51 @@ export const handleStudentLogin = async (req, res) => {
     }
 };
 
+// Change student password using JWT 
+export const handleStudentPasswordChange = async (req, res) => {
+    try {
+
+        const { currentPassword, newPassword, confirmPassword } = req.body;
+
+        if (req.body === undefined) {
+            return res.status(400).json({ message: 'Please provide all the neccessary data to proceed!' });
+        }
+
+        if (!currentPassword || !newPassword || !confirmPassword) {
+            return res.status(400).json({ message: 'All fields are required!' });
+        }
+
+        if (newPassword !== confirmPassword) {
+            return res.status(400).json({ message: 'New password and confirm password should be same ' });
+        }
+
+        if (newPassword.length < 6 || newPassword.length > 20) {
+            return res.status(400).json({ message: "Password length should be between 6 and 20 characters." });
+        }
+
+
+        if (currentPassword == newPassword) {
+            return res.status(400).json({ message: 'New password and current password should not be same!' });
+        }
+
+        const studentId = currentStudentId(req);
+        const studentExist = await Student.findById(studentId);
+        if (!studentExist) {
+            return res.status(401).json({ message: 'Student not exist!' });
+        }
+
+        const isPassMatch = await bcrypt.compare(currentPassword, studentExist.password);
+        if (!isPassMatch) {
+            return res.status(401).json({ message: 'Invalid current password!' });
+        }
+
+        const hashPassword = await bcrypt.hash(newPassword, 10);
+        studentExist.password = hashPassword;
+        studentExist.save()
+
+        return res.status(200).json({ message: 'Password updated successfully' });
+
+    } catch (error) {
+        return res.status(500).json({ message: 'Internal server error', error })
+    }
+}
