@@ -10,7 +10,7 @@ configDotenv();
 app.use(express.json());
 
 // Add router path for student
-app.use('/api/stud', router);
+app.use('/api/students', router);
 
 const PORT = process.env.PORT || 5000;
 const HOST = process.env.HOST;
