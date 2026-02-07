@@ -6,8 +6,6 @@ const studentSchema = new mongoose.Schema({
     password: { type: String, required: true },
     age: { type: Number, required: true },
     role: { type: String, default: 'stud' },
-    otp: { type: String },
-    otpExpiry: { type: Number }
 
 })
 
