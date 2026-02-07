@@ -5,11 +5,12 @@ const studentSchema = new mongoose.Schema({
     email: { type: String, unique: true, required: true },
     password: { type: String, required: true },
     age: { type: Number, required: true },
-
+    role: { type: String, default: 'stud' },
     otp: { type: String },
     otpExpiry: { type: Number }
 
 })
 
 
-export const Student = mongoose.model('student', studentSchema)
+const Student = mongoose.model('student', studentSchema);
+export default Student;

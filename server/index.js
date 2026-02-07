@@ -7,6 +7,8 @@ const app = express();
 configDotenv();
 
 // Middlewares 
+app.use(express.json());
+
 app.use('/api/stud', router);
 
 
