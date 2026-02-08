@@ -5,9 +5,6 @@ import crypto from 'crypto';
 import generateToken from '../utils/token.js';
 import { currentStudentId } from '../utils/authUtils.js';
 
-
-
-
 // Student signup logic
 export const handleStudentSignup = async (req, res) => {
     try {
@@ -61,12 +58,15 @@ export const handleStudentLogin = async (req, res) => {
             return res.status(400).json({ message: 'Invalid Password!' });
         }
 
-
-        // generate the 6 digit otp 
+        // generate the 6 digit otp
         const otpCode = crypto.randomInt(100000, 999999).toString();
         const otpExpiry = new Date(Date.now() + 5 * 60 * 1000);
 
         const hashOtp = await bcrypt.hash(otpCode, 10);
+
+
+        await Otp.deleteMany({ studentId: studentExist._id });
+
 
         await Otp.create({
             studentId: studentExist._id,
@@ -74,7 +74,48 @@ export const handleStudentLogin = async (req, res) => {
             expiresAt: otpExpiry,
         });
 
+        console.log(`Otp for ${email}: ${otpCode}`);
+
+
         return res.status(200).json({ message: 'Otp send successfully please verify to login' });
+    } catch (error) {
+        return res.status(500).json({ message: 'Internal server error' });
+    }
+};
+
+// Verify otp for student login
+export const handleVerifyOtp = async (req, res) => {
+    try {
+        const { email, otp } = req.body;
+
+        if (!email || !otp) {
+            return res.status(400).json({ message: 'All fields are required!' });
+        }
+
+        const studentExist = await Student.findOne({ email });
+        if (!studentExist) {
+            return res.status(400).json({ message: 'Student with this email does not exist' });
+        }
+
+        const otpRecord = await Otp.findOne({ studentId: studentExist._id });
+        if (!otpRecord) {
+            return res.status(400).json({ message: 'OTP expired or invalid' });
+        }
+
+        if (Date.now() > otpRecord.expiresAt) {
+            await Otp.deleteOne({ _id: otpRecord._id });
+            return res.status(400).json({ message: 'Otp expired' });
+        }
+
+        const isOtpMatch = await bcrypt.compare(String(otp).trim(), otpRecord.otp);
+        if (!isOtpMatch) {
+            return res.status(400).json({ message: 'Invalid Otp' });
+        }
+
+        // Generate JWT token
+        const token = generateToken(studentExist);
+
+        return res.status(200).json({ message: 'Login successful', token });
 
     } catch (error) {
         return res.status(500).json({ message: 'Internal server error' });
@@ -154,4 +195,3 @@ export const handleStudentAccountDelete = async (req, res) => {
         return res.status(500).json({ message: 'Internal server error', error });
     }
 };
-
