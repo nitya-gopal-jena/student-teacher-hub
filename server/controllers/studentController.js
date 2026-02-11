@@ -194,13 +194,14 @@ export const handleStudentAccountDelete = async (req, res) => {
   }
 };
 
+
 // Updated students profile logic
 export const handleUpdateProfile = async (req, res) => {
   try {
     const studentId = currentStudentId(req);
     const studentParamsId = req.params.id;
 
-    if (studentId !== studentParamsId) {
+    if (studentId.toString() !== studentParamsId) {
       return res.status(400).json({ message: 'You can only update your profile!' });
     }
 
@@ -209,10 +210,23 @@ export const handleUpdateProfile = async (req, res) => {
       return res.status(404).json({ message: 'Student not exist ' });
     }
 
+    // Extarct data from req.body 
+    const { name = studentExist.name, password = studentExist.password, age = studentExist.age, email = studentExist.email } = req.body;
+
+    // Clean empty string so they don't overwrite to keep previous data
+    const updatedData = {
+      name: name.trim() === '' ? studentExist.name : name,
+      email: email.trim() === '' ? studentExist.email : email,
+      password: password.trim() === '' ? studentExist.password : password,
+      age: age.trim() === '' ? studentExist.age : age,
+    }
+
+
     // Overwrite the new data over existing
-    const updatedStudent = await Student.findByIdAndUpdate(studentId, { $set: req.body }, { new: true, runValidators: true });
+    const updatedStudent = await Student.findByIdAndUpdate(studentId, { $set: updatedData }, { new: true });
 
     return res.status(200).json({ message: 'Profile updated successfully' }, updatedStudent);
+
   } catch (error) {
     return res.status(500).json({ message: 'Internal server error' });
   }

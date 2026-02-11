@@ -7,7 +7,7 @@ const studentSchema = new mongoose.Schema({
     age: { type: Number, required: true },
     role: { type: String, default: 'stud' },
 
-})
+}, { timestamps: true })
 
 
 const Student = mongoose.model('student', studentSchema);
