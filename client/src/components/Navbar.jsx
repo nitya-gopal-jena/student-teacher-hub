@@ -1,8 +1,15 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import '../css/navbar.css'
 
 const Navbar = () => {
+ 
+  const navigate = useNavigate();
+
+  const handleLogin = () => {
+    navigate('/login');
+  }
+
   return (
     <>
       <div className='navbar'>
@@ -17,7 +24,7 @@ const Navbar = () => {
         </div>
 
         <div className="login-btn">
-          <button type='submit' className='login'>Login</button>
+          <button type='submit' className='login'  onClick={handleLogin} >Login</button>
         </div>
       </div>
     </>
