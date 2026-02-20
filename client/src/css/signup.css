@@ -10,7 +10,7 @@
 .signup-box {
     background-color: white;
     padding: 40px;
-    border-radius: 8px;
+    border-radius: 5px;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
     width: 100%;
     max-width: 450px;
@@ -21,6 +21,7 @@
     text-align: center;
     margin-bottom: 20px;
     font-size: 22px;
+    font-family: 'Montserrat', sans-serif;
     font-weight: 600;
     color: #333;
 }
@@ -57,7 +58,8 @@
     border: none;
     color: #ffffff;
     font-size: 16px;
-    background: #7712cf;
+    font-family: 'Montserrat', sans-serif;
+    background: #470382;
     transition: all 0.5s ease;
     font-weight: 400;
     font-style: normal;
@@ -65,12 +67,13 @@
 }
 
 .submit-btn button:hover {
-    background: #9d02fe;
+    background: #3e0163;
 }
 
-.login-link{
-   margin-top: 20px;
-   text-align: center;
+.login-link {
+    margin-top: 20px;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
 }
 
 /* Responsive adjustments */

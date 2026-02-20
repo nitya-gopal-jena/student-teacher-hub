@@ -1,15 +1,12 @@
-/* Import Google Font */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
-
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-family: 'Montserrat', sans-serif;
     width: 100%;
     padding: 15px 30px;
-    background-color: black;
-    color: white;
+    background-color: #fff;
+    color: #000;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
     z-index: 1;
     left: 0;
     right: 0;
@@ -19,6 +16,8 @@
 .nav-logo {
     flex: 1;
     text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    color: #000;
 }
 
 .item-groups {
@@ -30,8 +29,9 @@
 }
 
 .item-groups a {
-    color: white;
+    color: #000;
     font-size: 16px;
+    font-family: 'Montserrat', sans-serif;
     font-weight: 600;
     text-decoration: none;
     transition: color 0.3s ease;
@@ -46,7 +46,6 @@
     display: flex;
     flex: 1;
     justify-content: flex-end;
-    /* keeps button aligned right */
 }
 
 .login-btn .login {
@@ -54,19 +53,20 @@
     width: 80px;
     border: none;
     outline: none;
-    border-radius: 2px;
+    border-radius: 5px;
     text-align: center;
-    font-size: 16px;
-    font-weight: 600;
-    background-color: white;
-    color: black;
+    font-size: 14px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    background-color: #000;
+    color: #fff;
     cursor: pointer;
     transition: background-color 0.5s ease, color 0.5s ease;
 }
 
 .login-btn .login:hover {
-    background-color: aqua;
-    color: black;
+    background-color:#242424;
+    color: #fff;
 }
 
 /* Responsive styles */

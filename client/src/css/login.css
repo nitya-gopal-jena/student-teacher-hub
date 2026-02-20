@@ -1,10 +1,8 @@
-
-
 .login-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;              
+  height: 100vh;
   font-family: 'Montserrat', sans-serif;
 }
 
@@ -12,8 +10,8 @@
 .login-box {
   background-color: white;
   padding: 40px;
-  border-radius: 8px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+  border-radius: 5px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
   width: 100%;
   max-width: 450px;
 }
@@ -23,6 +21,7 @@
   text-align: center;
   margin-bottom: 20px;
   font-size: 22px;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 600;
   color: #333;
 }
@@ -43,7 +42,7 @@
 }
 
 .form-groups input:focus {
-  border-color: #1e0439; 
+  border-color: #1e0439;
 }
 
 /* Submit button */
@@ -52,27 +51,29 @@
 }
 
 .submit-btn button {
-    width: 100%;
-    padding: 12px;
-    margin-top: 12px;
-    border-radius: 5px;
-    border: none;
-    color: #ffffff;
-    font-size: 16px;
-    background: #7712cf;
-    transition: all 0.5s ease;
-    font-weight: 400;
-    font-style: normal;
-    cursor: pointer;
+  width: 100%;
+  padding: 12px;
+  margin-top: 12px;
+  border-radius: 5px;
+  border: none;
+  color: #ffffff;
+  font-size: 16px;
+  font-family: 'Montserrat', sans-serif;
+  background: #470382;
+  transition: all 0.5s ease;
+  font-weight: 400;
+  font-style: normal;
+  cursor: pointer;
 }
 
 .submit-btn button:hover {
-   background: #9d02fe;
+  background: #3e0163;
 }
 
-.signup-link{
-   margin-top: 20px;
-   text-align: center;
+.signup-link {
+  margin-top: 20px;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
 }
 
 /* Responsive adjustments */

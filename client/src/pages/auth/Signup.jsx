@@ -30,7 +30,7 @@ const Signup = () => {
       <div className='signup-container'>
         <div className='signup-box'>
           <form onSubmit={handleSubmit}>
-            <h3 className='form-title'>Create a account</h3>
+            <h3 className='form-title'>Create an account</h3>
 
             <div className='form-groups'>
               <input type='text' placeholder='Enter your name' id='name' name='name' value={formData.name} onChange={handleChange} required />
