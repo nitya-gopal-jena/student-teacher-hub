@@ -1,0 +1,73 @@
+/* Container styling */
+.otp-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.otp-box {
+    background-color: white;
+    padding: 40px;
+    border-radius: 5px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 400px;
+}
+
+.otp-title {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+
+.otp-inputs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+
+.otp-input {
+    width: 45px;
+    height: 50px;
+    text-align: center;
+    font-size: 22px;
+    border: 2px solid #ccc;
+    border-radius: 6px;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.otp-input:focus {
+    border-color: #1e0439;
+    box-shadow: 0 0 4px #18032e;
+    ;
+}
+
+/* Verify button */
+.otp-button {
+    text-align: center;
+    width: 100%;
+    padding: 12px;
+    margin-top: 12px;
+    border-radius: 5px;
+    border: none;
+    color: #ffffff;
+    font-size: 16px;
+    font-family: 'Montserrat', sans-serif;
+    background: #470382;
+    transition: all 0.5s ease;
+    font-weight: 400;
+    font-style: normal;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.otp-button:hover {
+    background: #3e0163;
+}
