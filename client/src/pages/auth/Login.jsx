@@ -19,7 +19,7 @@ const Login = () => {
     try {
       const response = await axios.post('http://localhost:4000/api/students/login', formData);
       toast.success(response?.data?.message);
-      navigate('/verify-otp', { state: { email: formData.email } });
+      navigate('/student/verify-otp', { state: { email: formData.email } });
     } catch (error) {
       toast.error(error.response?.data?.message || 'Login Failed!');
     }
@@ -45,7 +45,7 @@ const Login = () => {
             </div>
 
             <p className='signup-link'>
-              Don't have an account ? <Link to='/signup'>Signup</Link>
+              Don't have an account ? <Link to='/student/signup'>Signup</Link>
             </p>
           </form>
         </div>

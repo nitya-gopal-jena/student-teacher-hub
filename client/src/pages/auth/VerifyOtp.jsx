@@ -28,7 +28,7 @@ const VerifyOtp = () => {
 
       localStorage.setItem('jwt', res.data.token);
       toast.success('OTP Verified Successfully!');
-      navigate('/home');
+      navigate('/');
     } catch (err) {
       console.error('Error:', err.response?.data || err.message);
       toast.error('Invalid or expired OTP');

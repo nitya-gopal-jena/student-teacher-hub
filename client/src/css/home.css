@@ -1,0 +1,57 @@
+.home-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    color: #000;
+}
+
+.home-title {
+    margin-bottom: 35px;
+    font-size: 32px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+}
+
+.card-container {
+    display: flex;
+    gap: 40px;
+}
+
+.login-card {
+    background: white;
+    color: #333;
+    padding: 30px;
+    border-radius: 6px;
+    width: 450px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    transition: 0.3s ease;
+}
+
+.login-card:hover {
+    transform: translateY(-10px);
+}
+
+.login-card .card-title {
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 10px;
+}
+
+.login-card button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-family: 'Montserrat', sans-serif;
+    cursor: pointer;
+    background-color: #4e73df;
+    color: white;
+    font-weight: bold;
+}
+
+.teacher-card button {
+    background-color: #e74a3b;
+}

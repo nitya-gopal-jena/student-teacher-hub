@@ -8,7 +8,7 @@ const Navbar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const handleLogin = () => {
-    navigate('/login');
+    navigate('/student/login');
   };
 
   useEffect(() => {
@@ -22,7 +22,7 @@ const Navbar = () => {
     localStorage.removeItem('jwt');
     setIsLoggedIn(false);
     toast.success('Logout Successfully');
-    navigate('/login');
+    navigate('/student/login');
   };
 
   return (

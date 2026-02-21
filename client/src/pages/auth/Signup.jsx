@@ -19,7 +19,7 @@ const Signup = () => {
     try {
       const response = await axios.post('http://localhost:4000/api/students/signup', formData);
       toast.success(response?.data?.message);
-      navigate('/login');
+      navigate('/student/login');
     } catch (error) {
       toast.error(error.response?.data.message || 'Registration Failed!');
     }
@@ -53,7 +53,7 @@ const Signup = () => {
             </div>
 
             <p className='login-link'>
-              Have an account ? <Link to='/login'>Login</Link>
+              Have an account ? <Link to='/student/login'>Login</Link>
             </p>
           </form>
         </div>
